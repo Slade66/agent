@@ -7,7 +7,7 @@ description: 用于按照模板解释函数的功能和用法。
 
 1. 我会给你一个函数，你需要按照这个 [函数模板](examples/sql.Open.md) 来解释这个函数的功能、用法、注意事项。
 
-2. 你需要在根目录下的 `cards` 文件夹中创建一个新的 markdown 文件，文件名为「包名.函数名」，并将解释内容写入该文件中。
+2. 你需要在根目录下的 `cards` 文件夹中创建一个新的 markdown 文件，文件名为「包名.函数名」（`sql.Open`）或「接受者类型.方法名」（`*DB.ExecContext`），并将解释内容写入该文件中。
 
     - YAML 头部的 `created` 字段要在 PowerShell 里调用 `Get-Date -Format 'yyyy-MM-ddTHH:mm:ssK'`获取真实的时间。
 
