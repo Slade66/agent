@@ -105,7 +105,12 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 
     ```go
     package main
-    
+
+    // 推理：为什么这个思路成立。
+    // -
+    //
+    // 算法：具体按什么步骤执行。
+    // -
     func gcdOfStrings(str1 string, str2 string) string {
         return ""
     }
