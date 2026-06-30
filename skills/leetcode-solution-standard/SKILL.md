@@ -85,3 +85,17 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 - **示例格式：** 每个示例使用 `### Example N` 分隔，`Input` 和 `Output` 各自作为独立列表项。
 
 - **代码标记：** 变量名、函数名、表达式和约束条件使用反引号包裹，例如 `str1`、`str2`、`1 <= str1.length <= 1000`。
+
+## solution.go 结构
+
+- **格式要求：** 提交前执行 `gofmt`。
+
+## solution_test.go 结构
+
+- **测试风格：** 使用 table-driven tests，统一组织输入、期望输出和用例名称。
+
+- **用例来源：** 至少覆盖官方的示例，补充边界条件和易错反例。
+
+## 参考示例
+
+- ./references/1071. Greatest Common Divisor of Strings/
