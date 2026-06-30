@@ -1,9 +1,17 @@
 ---
 name: leetcode-solution-standard
-description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 solution_test.go，确保题面归档、解法实现和测试用例结构一致。
+description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 solution_test.go 骨架，确保题面归档、解法实现和测试用例结构一致。
 ---
 
 # leetcode-solution-standard
+
+## SOP
+
+1. 接收用户提供的 LeetCode 题目文本。
+2. 确认输出位置：如果用户指定目录，就在指定目录下创建题目文件夹；否则在当前目录下创建。
+3. 题目文件夹命名为 `题号. 题目标题`，例如 `1768. Merge Strings Alternately`。
+4. 在题目文件夹内创建 `problem.md`、`solution.go` 和 `solution_test.go` 三个文件。
+5. 按下方规范分别写入题面归档、Go 解法骨架和 table-driven tests，并在完成前对 Go 文件执行 `gofmt`。
 
 ## 目录结构
 
@@ -88,13 +96,58 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 
 ## solution.go 结构
 
+- **实现边界：** 只创建可编译的函数骨架，不实现具体解题逻辑，保留给用户自己完成。
+
+- **推荐格式：**
+
+    ```go
+    package main
+    
+    func gcdOfStrings(str1 string, str2 string) string {
+        return ""
+    }
+    ```
+
 - **格式要求：** 提交前执行 `gofmt`。
 
 ## solution_test.go 结构
 
+- **生成原则：** 按照用户提供的题目文本创建测试用例，先完整覆盖题目中的官方示例，再补充边界条件和易错反例。
+
 - **测试风格：** 使用 table-driven tests，统一组织输入、期望输出和用例名称。
 
-- **用例来源：** 至少覆盖官方的示例，补充边界条件和易错反例。
+- **推荐格式：**
+
+    ```go
+    package main
+    
+    import "testing"
+    
+    func TestGcdOfStrings(t *testing.T) {
+        testCases := []struct {
+            name string
+            str1 string
+            str2 string
+            want string
+        }{
+            {
+                name: "official example 1",
+                str1: "ABCABC",
+                str2: "ABC",
+                want: "ABC",
+            },
+        }
+    
+        for _, tc := range testCases {
+            t.Run(tc.name, func(t *testing.T) {
+                got := gcdOfStrings(tc.str1, tc.str2)
+                if got != tc.want {
+                    t.Errorf("gcdOfStrings(%q, %q) = %q, want %q", tc.str1, tc.str2, got, tc.want)
+                }
+            })
+        }
+    }
+    ```
 
 ## 参考示例
 
