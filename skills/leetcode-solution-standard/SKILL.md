@@ -9,7 +9,7 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 
 1. 接收用户提供的 LeetCode 题目文本。
 2. 确认输出位置：如果用户指定目录，就在指定目录下创建题目文件夹；否则在当前目录下创建。
-3. 题目文件夹命名为 `题号. 题目标题`，例如 `1768. Merge Strings Alternately`。
+3. 题目文件夹命名为 `题号-题目标题`，例如 `1071-greatest-common-divisor-of-strings`。
 4. 在题目文件夹内创建 `problem.md`、`solution.go` 和 `solution_test.go` 三个文件。
 5. 按下方规范分别写入题面归档、Go 解法骨架和 table-driven tests，并在完成前对 Go 文件执行 `gofmt`。
 
@@ -38,6 +38,9 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 - **`solution_test.go`：** 只放测试用例代码。
 
 - **Q & A：**
+
+    - Q：为什么题目文件夹的名字是这样？
+    - A：用 slug 命名，例如 `1071-greatest-common-divisor-of-strings`，以避免空格和点带来的命令行路径问题。
 
     - Q：为什么题目描述和解法代码分开？
     - A：为了之后复习和重写。复习时可以先只看 `problem.md`，确认自己是否还能独立推出解法。
