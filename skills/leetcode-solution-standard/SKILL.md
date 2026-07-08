@@ -10,7 +10,7 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 1. 接收用户提供的 LeetCode 题目文本。
 2. 确认输出位置：如果用户指定目录，就在指定目录下创建题目文件夹；否则在当前目录下创建。
 3. 题目文件夹命名为 `题号-题目标题`，例如 `1071-greatest-common-divisor-of-strings`。
-4. 在题目文件夹内创建 `problem.md`、`solution.go` 和 `solution_test.go` 三个文件。
+4. 在题目文件夹内创建 `problem.md`、`solution_template.go` 和 `solution_test.go` 三个文件。
 5. 按下方规范分别写入题面归档、Go 解法骨架和 table-driven tests，并在完成前对 Go 文件执行 `gofmt`。
 
 ## 目录结构
@@ -21,19 +21,13 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
     leetcode/
       1071-greatest-common-divisor-of-strings/
         problem.md
-        solution.go
+        solution_template.go
         solution_test.go
     ```
 
-- **`problem.md`：** 只放题目原文，包括题目描述、输入输出示例、约束条件。
+- **`problem.md`：** 只放题目原文，包括题目描述、输入输出示例、约束条件。不写解法，保持“原题归档”的状态。
 
-    - 不写解法，保持“原题归档”的状态。
-
-- **`solution.go`：** 放题解和代码实现，包括解题思路、关键观察、算法步骤、可运行代码、复杂度和易错点。
-
-    - 解法逻辑写在函数上方，作为函数注释。
-    - 多个解法放在同一个文件中，方便横向对比。
-    - 代码负责表达“怎么做”，注释重点解释“为什么这么做”，避免重复描述代码表面动作。
+- **`solution_template.go`：** 只放空函数，不写具体实现；新增解法时复制为 `solution1.go`、`solution2.go` 等。
 
 - **`solution_test.go`：** 只放测试用例代码。
 
@@ -97,7 +91,7 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 
 - **代码标记：** 变量名、函数名、表达式和约束条件使用反引号包裹，例如 `str1`、`str2`、`1 <= str1.length <= 1000`。
 
-## solution.go 结构
+## solution_template.go 结构
 
 - **实现边界：** 只创建可编译的函数骨架，不实现具体解题逻辑，保留给用户自己完成。
 
@@ -106,11 +100,8 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
     ```go
     package main
 
-    // 推理：为什么这个思路成立。
-    // -
-    //
-    // 算法：具体按什么步骤执行。
-    // -
+    // 推理：为什么这个思路成立
+    // 
     func gcdOfStrings(str1 string, str2 string) string {
         return ""
     }
