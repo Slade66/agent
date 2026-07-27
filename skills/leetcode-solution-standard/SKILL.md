@@ -1,6 +1,6 @@
 ---
 name: leetcode-solution-standard
-description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 solution_test.go 骨架，确保题面归档、解法实现和测试用例结构一致。
+description: 为 LeetCode 题目生成标准化的 problem.md、solution.md、solution_template.go 和 solution_test.go，确保题面归档、解法笔记、代码骨架和测试用例结构一致。
 ---
 
 # leetcode-solution-standard
@@ -10,22 +10,25 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 1. 接收用户提供的 LeetCode 题目文本。
 2. 确认输出位置：如果用户指定目录，就在指定目录下创建题目文件夹；否则在当前目录下创建。
 3. 题目文件夹命名为 `题号-题目标题`，例如 `1071-greatest-common-divisor-of-strings`。
-4. 在题目文件夹内创建 `problem.md`、`solution_template.go` 和 `solution_test.go` 三个文件。
-5. 按下方规范分别写入题面归档、Go 解法骨架和 table-driven tests，并在完成前对 Go 文件执行 `gofmt`。
+4. 在题目文件夹内创建 `problem.md`、`solution.md`、`solution_template.go` 和 `solution_test.go` 四个文件。
+5. 按下方规范分别写入题面归档、解法笔记骨架、Go 函数骨架和 table-driven tests，并在完成前对 Go 文件执行 `gofmt`。
 
 ## 目录结构
 
-- **推荐结构：** 每道 LeetCode 题使用一个独立目录，目录内固定放置题目、解法和测试三个文件。
+- **推荐结构：** 每道 LeetCode 题使用一个独立目录，目录内固定放置以下四个文件。
 
     ```text
     leetcode/
       1071-greatest-common-divisor-of-strings/
         problem.md
+        solution.md
         solution_template.go
         solution_test.go
     ```
 
 - **`problem.md`：** 只放题目原文，包括题目描述、输入输出示例、约束条件。不写解法，保持“原题归档”的状态。
+
+- **`solution.md`：** 放解题笔记。新建时只保留“题意理解”和“方法一”两个二级标题。
 
 - **`solution_template.go`：** 只放空函数，不写具体实现；新增解法时复制为 `solution1.go`、`solution2.go` 等。
 
@@ -36,11 +39,8 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
     - Q：为什么题目文件夹的名字是这样？
     - A：用 slug 命名，例如 `1071-greatest-common-divisor-of-strings`，以避免空格和点带来的命令行路径问题。
 
-    - Q：为什么题目描述和解法代码分开？
-    - A：为了之后复习和重写。复习时可以先只看 `problem.md`，确认自己是否还能独立推出解法。
-
-    - Q：为什么多个解法放在一个代码文件？
-    - A：为了对比解法。相同题目的不同思路放在一起，更容易比较复杂度。
+    - Q：为什么题目、解题笔记和代码分开？
+    - A：为了之后复习和重写。先看 `problem.md` 独立思考，再用 `solution.md` 记录思路，最后在独立的 Go 文件中实现不同解法。
 
 ## problem.md 结构
 
@@ -61,15 +61,19 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
     
     ### Example 1
     
-    - Input: ...
+    - **Input:** ...
     
-    - Output: ...
+    - **Output:** ...
+
+    - **Explanation:** ...
     
     ### Example 2
     
-    - Input: ...
+    - **Input:** ...
     
-    - Output: ...
+    - **Output:** ...
+
+    - **Explanation:** ...
     
     ...
     
@@ -87,21 +91,38 @@ description: 为 LeetCode 题目生成标准化的 problem.md、solution.go 和 
 
 - **段落间距：** 每个列表项之间空一行，保持清晰的视觉分隔，方便阅读。
 
-- **示例格式：** 每个示例使用 `### Example N` 分隔，`Input` 和 `Output` 各自作为独立列表项。
+- **示例格式：** 每个示例使用 `### Example N` 分隔；`Input`、`Output` 和 `Explanation` 各自作为独立列表项，并用 Markdown 双星号完整加粗标签及冒号，固定写成 `**Input:**`、`**Output:**` 和 `**Explanation:**`。
 
 - **代码标记：** 变量名、函数名、表达式和约束条件使用反引号包裹，例如 `str1`、`str2`、`1 <= str1.length <= 1000`。
 
+## solution.md 结构
+
+- **初始内容：** 新建时只写下面两个 H2 标题，不补充正文。
+
+- **空行规则：** `## 题意理解` 上方保留一个空行，两个标题之间保留三个空行，`## 方法一` 下方保留四个空行。
+
+    ```md
+
+    ## 题意理解
+
+
+
+    ## 方法一
+
+
+
+
+    ```
+
 ## solution_template.go 结构
 
-- **实现边界：** 只创建可编译的函数骨架，不实现具体解题逻辑，保留给用户自己完成。
+- **实现边界：** 只创建可编译的函数骨架，不实现具体解题逻辑，也不添加解法注释，保留给用户自己完成。
 
 - **推荐格式：**
 
     ```go
     package main
 
-    // 推理：为什么这个思路成立
-    // 
     func gcdOfStrings(str1 string, str2 string) string {
         return ""
     }

@@ -11,27 +11,27 @@
 
 ### Example 1
 
-- Input: str1 = "ABCABC", str2 = "ABC"
+- **Input:** str1 = "ABCABC", str2 = "ABC"
 
-- Output: "ABC"
+- **Output:** "ABC"
 
 ### Example 2
 
-- Input: str1 = "ABABAB", str2 = "ABAB"
+- **Input:** str1 = "ABABAB", str2 = "ABAB"
 
-- Output: "AB"
+- **Output:** "AB"
 
 ### Example 3
 
-- Input: str1 = "LEET", str2 = "CODE"
+- **Input:** str1 = "LEET", str2 = "CODE"
 
-- Output: ""
+- **Output:** ""
 
 ### Example 4
 
-- Input: str1 = "AAAAAB", str2 = "AAA"
+- **Input:** str1 = "AAAAAB", str2 = "AAA"
 
-- Output: ""
+- **Output:** ""
 
 ## Constraints
 
